@@ -1,0 +1,12 @@
+services:
+  eruen-agent:
+    build: .
+    ports:
+      - "9876:9876"
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9876/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
